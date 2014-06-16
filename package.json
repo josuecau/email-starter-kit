@@ -1,0 +1,19 @@
+{
+  "name": "emailing-bootstrap",
+  "version": "0.0.1",
+  "description": "An emailing boilerplate",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "josuecau",
+  "license": "ISC",
+  "dependencies": {
+    "coffee-script": "^1.7.1",
+    "gulp-htmltidy": "0.0.1",
+    "gulp-imagemin": "^0.6.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.0"
+  }
+}
