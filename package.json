@@ -2,11 +2,10 @@
   "name": "emailing-bootstrap",
   "version": "0.0.1",
   "description": "An emailing boilerplate",
-  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "josuecau",
+  "author": "Josué Cau <josuecau@yahoo.fr> (http://www.josuecau.com)",
   "license": "ISC",
   "devDependencies": {
     "coffee-script": "^1.7.1",
