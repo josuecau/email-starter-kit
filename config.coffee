@@ -6,11 +6,15 @@ module.exports =
   paths:
     src: path.join __dirname, 'src'
     dest: path.join __dirname, 'build'
+  template:
+    pretty: true
+    locals:
+      title: 'The title'
   tidy:
     #asciiChars: 1
     charEncoding: 'ascii'
     doctype: 'loose'
-    #outputEncoding: 'ascii'
+    outputEncoding: 'ascii'
     inputEncoding: 'utf8'
     #fixUri: false
     indent: 'auto'

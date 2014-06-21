@@ -4,6 +4,7 @@ htmltidy = require 'gulp-htmltidy'
 imagemin = require 'gulp-imagemin'
 cheerio  = require 'gulp-cheerio'
 cache    = require 'gulp-cached'
+jade     = require 'gulp-jade'
 path     = require 'path'
 url      = require 'url'
 fs       = require 'fs'
@@ -63,7 +64,8 @@ checkImage = ($) ->
           return gutil.beep()
 
 gulp.task 'html', ->
-  gulp.src path.join config.paths.src, '*.html'
+  gulp.src path.join config.paths.src, '*.jade'
+  .pipe jade config.template
   .pipe cheerio addLinkTitle
   .pipe cheerio addlinktarget
   .pipe cheerio addTracking

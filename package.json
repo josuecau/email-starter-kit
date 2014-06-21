@@ -13,8 +13,9 @@
     "gulp": "^3.8.0",
     "gulp-cached": "0.0.3",
     "gulp-cheerio": "^0.3.1",
-    "gulp-htmltidy": "0.0.1",
+    "gulp-htmltidy": "git://github.com/josuecau/gulp-htmltidy.git#3575ef99b1cea4003fadadabdfce23a18cb0d964",
     "gulp-imagemin": "^0.6.1",
+    "gulp-jade": "^0.6.0",
     "gulp-util": "^2.2.17",
     "underscore": "^1.6.0"
   }
