@@ -48,6 +48,12 @@ fixImage = ($) ->
     .css 'display', 'block'
     .attr 'border', 0
 
+fixTable = ($) ->
+  $ 'table'
+    .attr 'border', 0
+    .attr 'cellpadding', 0
+    .attr 'cellspacing', 0
+
 checkImage = ($) ->
   $ 'img'
     .each ->
@@ -70,6 +76,7 @@ gulp.task 'html', ->
   .pipe cheerio addlinktarget
   .pipe cheerio addTracking
   .pipe cheerio fixImage
+  .pipe cheerio fixTable
   .pipe cheerio checkImage
   .pipe htmltidy config.tidy
   .pipe gulp.dest config.paths.dest
