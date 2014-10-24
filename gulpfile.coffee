@@ -6,6 +6,7 @@ cheerio  = require 'gulp-cheerio'
 cache    = require 'gulp-cached'
 jade     = require 'gulp-jade'
 path     = require 'path'
+replace  = require 'gulp-replace'
 url      = require 'url'
 fs       = require 'fs'
 util     = require 'util'
@@ -80,6 +81,7 @@ gulp.task 'html', ->
   .pipe cheerio fixTable
   .pipe cheerio checkImage
   .pipe htmltidy config.tidy
+  .pipe replace 'us-ascii', 'UTF-8'
   .pipe gulp.dest config.paths.dest
 
 gulp.task 'img', ->
