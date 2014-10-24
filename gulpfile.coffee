@@ -1,17 +1,18 @@
-gulp     = require 'gulp'
-gutil    = require 'gulp-util'
-htmltidy = require 'gulp-htmltidy'
-imagemin = require 'gulp-imagemin'
-cheerio  = require 'gulp-cheerio'
-cache    = require 'gulp-cached'
-jade     = require 'gulp-jade'
-path     = require 'path'
-replace  = require 'gulp-replace'
-url      = require 'url'
-fs       = require 'fs'
-util     = require 'util'
-_        = require 'underscore'
-config   = require './config'
+gulp       = require 'gulp'
+gutil      = require 'gulp-util'
+htmltidy   = require 'gulp-htmltidy'
+imagemin   = require 'gulp-imagemin'
+cheerio    = require 'gulp-cheerio'
+cache      = require 'gulp-cached'
+livereload = require 'gulp-livereload'
+jade       = require 'gulp-jade'
+path       = require 'path'
+replace    = require 'gulp-replace'
+url        = require 'url'
+fs         = require 'fs'
+util       = require 'util'
+_          = require 'underscore'
+config     = require './config'
 
 addLinkTitle = ($) ->
   $ 'a'
@@ -89,5 +90,14 @@ gulp.task 'img', ->
   .pipe cache 'img'
   .pipe imagemin()
   .pipe gulp.dest path.join config.paths.dest, 'img'
+
+gulp.task 'watch', ->
+  src = path.join config.paths.src, '**'
+  dest = path.join config.paths.dest, '**'
+  gulp.watch src, ['html', 'img']
+  livereload.listen()
+  gulp.watch dest
+  .on 'change', (file) ->
+    livereload.changed file
 
 gulp.task 'default', ['html', 'img']
