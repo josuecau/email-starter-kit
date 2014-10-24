@@ -83,7 +83,7 @@ gulp.task 'html', ->
   .pipe gulp.dest config.paths.dest
 
 gulp.task 'img', ->
-  gulp.src path.join config.paths.src, 'img/*'
+  gulp.src path.join config.paths.src, 'img/**'
   .pipe cache 'img'
   .pipe imagemin()
   .pipe gulp.dest path.join config.paths.dest, 'img'
