@@ -71,7 +71,7 @@ checkImage = ($) ->
           return gutil.beep()
 
 gulp.task 'html', ->
-  gulp.src path.join config.paths.src, '*.jade'
+  gulp.src ['./src/*.jade', '!./src/_*']
   .pipe jade config.template
   .pipe cheerio addLinkTitle
   .pipe cheerio addlinktarget
