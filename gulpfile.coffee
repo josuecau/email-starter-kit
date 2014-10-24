@@ -66,7 +66,8 @@ checkImage = ($) ->
           return gutil.beep()
         extension = path.extname resolve
         if !_.contains config.images.extensions, extension
-          gutil.log util.format 'Unexpected format "%s" for image "%s"', extension, src
+          gutil.log util.format 'Unexpected format "%s"
+          for image "%s"', extension, src
           return gutil.beep()
 
 gulp.task 'html', ->
