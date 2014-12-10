@@ -1,11 +1,18 @@
-path = require 'path'
-
 module.exports =
+  paths:
+    all:
+      src: 'src/**'
+      dest: 'build/**'
+    html:
+      src: ['src/**/*.jade', '!src/jade/**/_*.jade']
+      dest: 'build'
+      watch: 'src/**.jade'
+    img:
+      src: 'src/img/**'
+      dest: 'build/img'
+      watch: 'src/img/**'
   images:
     extensions: ['.jpg', '.gif']
-  paths:
-    src: path.join __dirname, 'src'
-    dest: path.join __dirname, 'build'
   template:
     pretty: true
     locals:

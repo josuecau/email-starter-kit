@@ -7,6 +7,7 @@ url     = require 'url'
 util    = require 'util'
 
 config  = require './config'
+paths   = config.paths
 $$      = plugins()
 
 addLinkTitle = ($) ->
@@ -56,7 +57,7 @@ checkImage = ($) ->
     .each ->
       $img = $ @
       src = $img.attr 'src'
-      resolve = path.resolve config.paths.src, src
+      resolve = path.resolve 'src', src
       fs.exists resolve, (exists) ->
         if !exists
           $$.util.log util.format 'Image File "%s" not found', src
@@ -68,7 +69,7 @@ checkImage = ($) ->
           return $$.util.beep()
 
 gulp.task 'html', ->
-  gulp.src ['./src/*.jade', '!./src/_*']
+  gulp.src paths.html.src
   .pipe $$.jade config.template
   .pipe $$.cheerio addLinkTitle
   .pipe $$.cheerio addlinktarget
@@ -78,13 +79,13 @@ gulp.task 'html', ->
   .pipe $$.cheerio checkImage
   .pipe $$.htmltidy config.tidy
   .pipe $$.replace 'us-ascii', 'UTF-8'
-  .pipe gulp.dest config.paths.dest
+  .pipe gulp.dest paths.html.dest
 
 gulp.task 'img', ->
-  gulp.src path.join config.paths.src, 'img/**'
+  gulp.src paths.img.src
   .pipe $$.cached 'img'
   .pipe $$.imagemin()
-  .pipe gulp.dest path.join config.paths.dest, 'img'
+  .pipe gulp.dest paths.img.dest
 
 gulp.task 'watch', ->
   gulp.watch paths.html.watch, ['html']
