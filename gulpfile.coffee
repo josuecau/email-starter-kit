@@ -1,18 +1,13 @@
-gulp       = require 'gulp'
-gutil      = require 'gulp-util'
-htmltidy   = require 'gulp-htmltidy'
-imagemin   = require 'gulp-imagemin'
-cheerio    = require 'gulp-cheerio'
-cache      = require 'gulp-cached'
-livereload = require 'gulp-livereload'
-jade       = require 'gulp-jade'
-path       = require 'path'
-replace    = require 'gulp-replace'
-url        = require 'url'
-fs         = require 'fs'
-util       = require 'util'
-_          = require 'underscore'
-config     = require './config'
+_       = require 'underscore'
+fs      = require 'fs'
+gulp    = require 'gulp'
+path    = require 'path'
+plugins = require 'gulp-load-plugins'
+url     = require 'url'
+util    = require 'util'
+
+config  = require './config'
+$$      = plugins()
 
 addLinkTitle = ($) ->
   $ 'a'
@@ -64,40 +59,39 @@ checkImage = ($) ->
       resolve = path.resolve config.paths.src, src
       fs.exists resolve, (exists) ->
         if !exists
-          gutil.log util.format 'Image File "%s" not found', src
-          return gutil.beep()
+          $$.util.log util.format 'Image File "%s" not found', src
+          return $$.util.beep()
         extension = path.extname resolve
         if !_.contains config.images.extensions, extension
-          gutil.log util.format 'Unexpected format "%s"
+          $$.util.log util.format 'Unexpected format "%s"
           for image "%s"', extension, src
-          return gutil.beep()
+          return $$.util.beep()
 
 gulp.task 'html', ->
   gulp.src ['./src/*.jade', '!./src/_*']
-  .pipe jade config.template
-  .pipe cheerio addLinkTitle
-  .pipe cheerio addlinktarget
-  .pipe cheerio addTracking
-  .pipe cheerio fixImage
-  .pipe cheerio fixTable
-  .pipe cheerio checkImage
-  .pipe htmltidy config.tidy
-  .pipe replace 'us-ascii', 'UTF-8'
+  .pipe $$.jade config.template
+  .pipe $$.cheerio addLinkTitle
+  .pipe $$.cheerio addlinktarget
+  .pipe $$.cheerio addTracking
+  .pipe $$.cheerio fixImage
+  .pipe $$.cheerio fixTable
+  .pipe $$.cheerio checkImage
+  .pipe $$.htmltidy config.tidy
+  .pipe $$.replace 'us-ascii', 'UTF-8'
   .pipe gulp.dest config.paths.dest
 
 gulp.task 'img', ->
   gulp.src path.join config.paths.src, 'img/**'
-  .pipe cache 'img'
-  .pipe imagemin()
+  .pipe $$.cached 'img'
+  .pipe $$.imagemin()
   .pipe gulp.dest path.join config.paths.dest, 'img'
 
 gulp.task 'watch', ->
-  src = path.join config.paths.src, '**'
-  dest = path.join config.paths.dest, '**'
-  gulp.watch src, ['html', 'img']
-  livereload.listen()
-  gulp.watch dest
+  gulp.watch paths.html.watch, ['html']
+  gulp.watch paths.img.watch, ['img']
+  $$.livereload.listen()
+  gulp.watch paths.all.dest
   .on 'change', (file) ->
-    livereload.changed file
+    $$.livereload.changed file
 
 gulp.task 'default', ['html', 'img']
