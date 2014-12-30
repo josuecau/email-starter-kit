@@ -17,12 +17,10 @@ module.exports =
     pretty: true
     locals: {}
   tidy:
-    #asciiChars: 1
     charEncoding: 'ascii'
     doctype: 'loose'
     outputEncoding: 'ascii'
     inputEncoding: 'utf8'
-    #fixUri: false
     indent: 'auto'
     sortAttributes: 'alpha'
     wrap: 0
