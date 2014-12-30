@@ -15,8 +15,7 @@ module.exports =
     extensions: ['.jpg', '.gif']
   template:
     pretty: true
-    locals:
-      title: 'The title'
+    locals: {}
   tidy:
     #asciiChars: 1
     charEncoding: 'ascii'
