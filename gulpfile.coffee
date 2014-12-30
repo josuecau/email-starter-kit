@@ -1,13 +1,10 @@
 _       = require 'underscore'
-fs      = require 'fs'
+del     = require 'del'
 gulp    = require 'gulp'
-path    = require 'path'
 plugins = require 'gulp-load-plugins'
 url     = require 'url'
-util    = require 'util'
 
 config  = require './config'
-paths   = config.paths
 $$      = plugins()
 
 addLinkTitle = ($) ->
@@ -19,7 +16,7 @@ addLinkTitle = ($) ->
       return if typeof alt is 'undefined' or alt is ''
       $a.attr 'title', alt
 
-addlinktarget = ($) ->
+addLinktarget = ($) ->
   $ 'a'
     .attr 'target', '_blank'
 
@@ -52,46 +49,32 @@ fixTable = ($) ->
     .attr 'cellpadding', 0
     .attr 'cellspacing', 0
 
-checkImage = ($) ->
-  $ 'img'
-    .each ->
-      $img = $ @
-      src = $img.attr 'src'
-      resolve = path.resolve 'src', src
-      fs.exists resolve, (exists) ->
-        if !exists
-          $$.util.log util.format 'Image File "%s" not found', src
-          return $$.util.beep()
-        extension = path.extname resolve
-        if !_.contains config.images.extensions, extension
-          $$.util.log util.format 'Unexpected format "%s"
-          for image "%s"', extension, src
-          return $$.util.beep()
-
 gulp.task 'html', ->
-  gulp.src paths.html.src
-  .pipe $$.jade config.template
+  gulp.src config.html.src
+  .pipe $$.jade config.jade
   .pipe $$.cheerio addLinkTitle
-  .pipe $$.cheerio addlinktarget
+  .pipe $$.cheerio addLinktarget
   .pipe $$.cheerio addTracking
   .pipe $$.cheerio fixImage
   .pipe $$.cheerio fixTable
-  .pipe $$.cheerio checkImage
   .pipe $$.htmltidy config.tidy
   .pipe $$.replace 'us-ascii', 'UTF-8'
-  .pipe gulp.dest paths.html.dest
+  .pipe gulp.dest config.html.dest
   .pipe $$.livereload()
 
 gulp.task 'img', ->
-  gulp.src paths.img.src
+  gulp.src config.img.src
   .pipe $$.cached 'img'
   .pipe $$.imagemin()
-  .pipe gulp.dest paths.img.dest
+  .pipe gulp.dest config.img.dest
   .pipe $$.livereload()
+
+gulp.task 'clean', (cb) ->
+  del config.dest, cb
 
 gulp.task 'watch', ->
   $$.livereload.listen()
-  gulp.watch paths.html.watch, ['html']
-  gulp.watch paths.img.watch, ['img']
+  gulp.watch config.html.watch, ['html']
+  gulp.watch config.img.watch, ['img']
 
 gulp.task 'default', ['html', 'img']

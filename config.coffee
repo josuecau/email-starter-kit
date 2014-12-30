@@ -1,19 +1,18 @@
+src  = 'src'
+dest = 'build'
+
 module.exports =
-  paths:
-    all:
-      src: 'src/**'
-      dest: 'build/**'
-    html:
-      src: ['src/**/*.jade', '!src/jade/**/_*.jade']
-      dest: 'build'
-      watch: 'src/**.jade'
-    img:
-      src: 'src/img/**'
-      dest: 'build/img'
-      watch: 'src/img/**'
-  images:
-    extensions: ['.jpg', '.gif']
-  template:
+  src: src
+  dest: dest + '/**'
+  html:
+    src: [src + '/jade/**/*.jade', '!' + src + '/jade/**/_*.jade']
+    dest: dest
+    watch: src + '/jade/**/*.jade'
+  img:
+    src: [src + '/img/**/*.jpg', src + '/img/**/*.gif']
+    dest: dest + '/img'
+    watch: [src + '/img/**/*.jpg', src + '/img/**/*.gif']
+  jade:
     pretty: true
     locals: {}
   tidy:
