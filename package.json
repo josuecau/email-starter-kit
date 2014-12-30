@@ -8,17 +8,17 @@
   "author": "Josué Cau <josuecau@yahoo.fr> (http://www.josuecau.com)",
   "license": "ISC",
   "devDependencies": {
-    "coffee-script": "^1.7.1",
-    "gulp": "^3.8.0",
-    "gulp-cached": "0.0.3",
-    "gulp-cheerio": "^0.3.1",
-    "gulp-htmltidy": "git://github.com/josuecau/gulp-htmltidy.git#3575ef99b1cea4003fadadabdfce23a18cb0d964",
-    "gulp-imagemin": "^0.6.1",
-    "gulp-jade": "^0.6.0",
-    "gulp-livereload": "^2.1.1",
+    "coffee-script": "^1.8.0",
+    "gulp": "^3.8.10",
+    "gulp-cached": "^1.0.1",
+    "gulp-cheerio": "^0.3.2",
+    "gulp-htmltidy": "josuecau/gulp-htmltidy",
+    "gulp-imagemin": "^2.1.0",
+    "gulp-jade": "^0.10.0",
+    "gulp-livereload": "^3.0.2",
     "gulp-load-plugins": "^0.8.0",
-    "gulp-replace": "^0.4.0",
-    "gulp-util": "^2.2.17",
-    "underscore": "^1.6.0"
+    "gulp-replace": "^0.5.0",
+    "gulp-util": "^3.0.1",
+    "underscore": "^1.7.0"
   }
 }

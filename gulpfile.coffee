@@ -80,19 +80,18 @@ gulp.task 'html', ->
   .pipe $$.htmltidy config.tidy
   .pipe $$.replace 'us-ascii', 'UTF-8'
   .pipe gulp.dest paths.html.dest
+  .pipe $$.livereload()
 
 gulp.task 'img', ->
   gulp.src paths.img.src
   .pipe $$.cached 'img'
   .pipe $$.imagemin()
   .pipe gulp.dest paths.img.dest
+  .pipe $$.livereload()
 
 gulp.task 'watch', ->
+  $$.livereload.listen()
   gulp.watch paths.html.watch, ['html']
   gulp.watch paths.img.watch, ['img']
-  $$.livereload.listen()
-  gulp.watch paths.all.dest
-  .on 'change', (file) ->
-    $$.livereload.changed file
 
 gulp.task 'default', ['html', 'img']
