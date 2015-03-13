@@ -23,10 +23,3 @@ module.exports =
     indent: 'auto'
     sortAttributes: 'alpha'
     wrap: 0
-  tracking: false
-    #params:
-      #utm_source: 'newsXXX'
-      #utm_medium: 'email'
-      #utm_content: 'newsXXXXXXXX'
-    #excludedHosts: ['facebook.com', 'twitter.com']
-    #excludedProtocols: ['mailto:']
