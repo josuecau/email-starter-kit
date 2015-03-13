@@ -33,22 +33,22 @@ fixTable = ($) ->
 
 gulp.task 'html', ->
   gulp.src config.html.src
-  .pipe $$.jade config.jade
-  .pipe $$.cheerio addLinkTitle
-  .pipe $$.cheerio addLinktarget
-  .pipe $$.cheerio fixImage
-  .pipe $$.cheerio fixTable
-  .pipe $$.htmltidy config.tidy
-  .pipe $$.replace 'us-ascii', 'UTF-8'
-  .pipe gulp.dest config.html.dest
-  .pipe $$.livereload()
+    .pipe $$.jade config.jade
+    .pipe $$.cheerio addLinkTitle
+    .pipe $$.cheerio addLinktarget
+    .pipe $$.cheerio fixImage
+    .pipe $$.cheerio fixTable
+    .pipe $$.htmltidy config.tidy
+    .pipe $$.replace 'us-ascii', 'UTF-8'
+    .pipe gulp.dest config.html.dest
+    .pipe $$.livereload()
 
 gulp.task 'img', ->
   gulp.src config.img.src
-  .pipe $$.newer config.img.dest
-  .pipe $$.imagemin()
-  .pipe gulp.dest config.img.dest
-  .pipe $$.livereload()
+    .pipe $$.newer config.img.dest
+    .pipe $$.imagemin()
+    .pipe gulp.dest config.img.dest
+    .pipe $$.livereload()
 
 gulp.task 'clean', (cb) ->
   del config.dest, cb
