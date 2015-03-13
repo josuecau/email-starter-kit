@@ -64,7 +64,7 @@ gulp.task 'html', ->
 
 gulp.task 'img', ->
   gulp.src config.img.src
-  .pipe $$.cached 'img'
+  .pipe $$.newer config.img.dest
   .pipe $$.imagemin()
   .pipe gulp.dest config.img.dest
   .pipe $$.livereload()
