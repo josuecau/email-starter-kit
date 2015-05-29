@@ -53,7 +53,7 @@ gulp.task 'img', ->
 gulp.task 'clean', (cb) ->
   del config.dest, cb
 
-gulp.task 'watch', ->
+gulp.task 'watch', ['default'], ->
   $$.livereload.listen()
   gulp.watch config.html.watch, ['html']
   gulp.watch config.img.watch, ['img']
