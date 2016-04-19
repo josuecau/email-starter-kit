@@ -33,7 +33,7 @@ fixTable = ($) ->
 
 gulp.task 'html', ->
   gulp.src config.html.src
-    .pipe $$.jade config.jade
+    .pipe $$.pug config.pug
     .pipe $$.cheerio addLinkTitle
     .pipe $$.cheerio addLinktarget
     .pipe $$.cheerio fixImage

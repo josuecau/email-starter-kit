@@ -1,6 +1,6 @@
 ## Emailing Bootstrap
 
-An emailing boilerplate powered by Gulp and Jade.
+An emailing boilerplate powered by Gulp and Pug.
 
 ### Installation
 
