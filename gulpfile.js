@@ -1,6 +1,7 @@
 const del = require('del');
 const gulp = require('gulp');
 const plugins = require('gulp-load-plugins');
+const styleAttr = require('style-attr');
 const config = require('./config');
 
 const $$ = plugins();
@@ -32,6 +33,14 @@ const fixTable = ($) => {
   });
 };
 
+const normalizeStyle = ($) => {
+  return $('[style]').each((index, el) => {
+    var $el = $(el);
+    var styles = styleAttr.parse($el.attr('style'));
+    $el.css(styles);
+  });
+};
+
 gulp.task('html', () => {
   return gulp.src(config.html.src)
     .pipe($$.pug(config.pug))
@@ -39,6 +48,7 @@ gulp.task('html', () => {
     .pipe($$.cheerio(addLinktarget))
     .pipe($$.cheerio(fixImage))
     .pipe($$.cheerio(fixTable))
+    .pipe($$.cheerio(normalizeStyle))
     .pipe($$.htmltidy(config.tidy))
     .pipe($$.replace('us-ascii', 'UTF-8'))
     .pipe(gulp.dest(config.html.dest))
