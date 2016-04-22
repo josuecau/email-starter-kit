@@ -1,8 +1,6 @@
-_       = require 'underscore'
 del     = require 'del'
 gulp    = require 'gulp'
 plugins = require 'gulp-load-plugins'
-url     = require 'url'
 
 config  = require './config'
 $$      = plugins()
