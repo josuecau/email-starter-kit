@@ -2,9 +2,6 @@
   "name": "emailing-bootstrap",
   "version": "0.0.2",
   "description": "An emailing boilerplate powered by Gulp and Pug.",
-  "bin": {
-    "gulp": "node_modules/.bin/gulp"
-  },
   "scripts": {
     "build": "gulp",
     "watch": "gulp watch",
