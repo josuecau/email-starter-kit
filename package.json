@@ -1,7 +1,7 @@
 {
   "name": "emailing-bootstrap",
   "version": "0.1.0",
-  "description": "An emailing boilerplate powered by Gulp and Pug.",
+  "description": "It's an opinionated toolbox for HTML emails.",
   "scripts": {
     "build": "gulp",
     "watch": "gulp watch",
