@@ -1,0 +1,7 @@
+npm:
+  build: .
+  volumes:
+    - ./build:/opt/build
+    - ./src:/opt/src:ro
+  ports:
+    - "35729:35729"

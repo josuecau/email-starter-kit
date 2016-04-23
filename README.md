@@ -4,11 +4,15 @@ An emailing boilerplate powered by Gulp and Pug.
 
 ### Installation
 
-    git clone https://github.com/josuecau/emailing-bootstrap.git
-    cd emailing-bootstrap
-    npm install
-    npm run build
+    $ npm install
+    $ npm run build
 
 To run compilation in background:
 
-    npm run watch
+    $ npm run watch
+
+Or with Docker:
+
+    $ docker-compose build
+    $ docker-compose run --rm --service-ports npm run build
+    $ docker-compose run --rm --service-ports npm run watch
