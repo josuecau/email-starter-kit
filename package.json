@@ -1,5 +1,5 @@
 {
-  "name": "emailing-bootstrap",
+  "name": "email-starter-kit",
   "version": "0.1.0",
   "description": "It's an opinionated toolbox for HTML emails.",
   "scripts": {
@@ -11,7 +11,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/josuecau/emailing-bootstrap.git"
+    "url": "https://github.com/josuecau/email-starter-kit.git"
   },
   "devDependencies": {
     "del": "^1.1.1",
