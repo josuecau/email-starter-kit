@@ -1,4 +1,4 @@
-FROM node:5.11
+FROM node:6.0-slim
 
 ENV NPM_CONFIG_LOGLEVEL warn
 
