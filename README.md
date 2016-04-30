@@ -27,5 +27,5 @@ To run compilation in background:
 ### Or with Docker:
 
     $ docker-compose build
-    $ docker-compose run --rm --service-ports npm run build
+    $ docker-compose run --rm npm run build
     $ docker-compose run --rm --service-ports npm run watch
