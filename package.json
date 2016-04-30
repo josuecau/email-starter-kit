@@ -7,7 +7,7 @@
     "watch": "gulp watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Josué Cau <me@josuecau.com> (http://www.josuecau.com)",
+  "author": "Josué Cau <me@josuecau.com> (https://www.josuecau.com)",
   "license": "MIT",
   "repository": {
     "type": "git",
